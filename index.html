@@ -19,34 +19,29 @@
             <div class="que">
                 <h2>Kö</h2>
                 <ol>
-
+                    
                 </ol>
             </div>
-            <div class="booking">
-                <h2 id="booking-state">Avboka Bord</h2>
-                <div class="booking-onerow">
+            <div class="avboka">
+                <h2>Avboka Bord</h2>
+                <div class="avboka-onerow">
                     <select name="table" id="table">
-                        <option value="1">Bord 1 | 4 Platser</option>
-                        <option value="2">Bord 2 | 4 Platser</option>
-                        <option value="3">Bord 3 | 4 Platser</option>
-                        <option value="4">Bord 4 | 4 Platser</option>
-                        <option value="5">Bord 5 | 4 Platser</option>
-                        <option value="6">Bord 6 | 4 Platser</option>
-                        <option value="7">Bord 7 | 4 Platser</option>
-                        <option value="8">Bord 8 | 4 Platser</option>
-                        <option value="9">Bord 9 | 4 Platser</option>
-                        <option value="10">Bord 10 | 4 Platser</option>
-                        <option value="11">Bord 11 | 2 Platser</option>
-                        <option value="12">Bord 12 | 2 Platser</option>
-                        <option value="13">Bord 13 | 6 Platser</option>
-                        <option value="14">Bord 14 | 2 Platser</option>
-                        <option value="15">Bord 15 | 2 Platser</option>
-                        <option value="16">Bord 16 | 2 Platser</option>
                     </select>
-                    <button class="material-symbols-outlined booking-button" id="help-button">help</button>
-                    <button id="confirm" class="booking-button">Bekräfta</button>
-                    <button id="cancel" class="booking-button">Avbryt</button>
+                    <button class="material-symbols-outlined avboka-button" id="help-button">help</button>
+                    <button id="confirm" class="avboka-button">Bekräfta</button>
+                    <button id="cancel" class="avboka-button">Avbryt</button>
                 </div>
+            </div>
+            <div class="booking">
+                <label for="seats">Plats:</label>
+                <select name="seats" id="seats">
+                    <option value="2">1-2</option>
+                    <option value="4">3-4</option>
+                    <option value="6">5-6</option>
+                </select>
+                <label for="out">Äta ute?</label>
+                <input name="out" id="out" type="checkbox">
+                <button>Ok</button>
             </div>
             <dialog id="floor-dialog">
                 <form method="dialog">
@@ -54,6 +49,11 @@
                 </form>
                 <img src="Images/floorplan.png" alt="">
             </dialog>
+            <dialog id="error">
+                <h3>Error</h3>
+                <p>Info</p>
+            </dialog>
+
         </div>
     </main>
 </body>

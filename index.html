@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Restaurang</title>
+    <link rel="stylesheet" href="index.css">
+    <script src="index.js" defer></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+</head>
+<body>
+    <main>
+        <div class="welcome">
+            <h1>Bokningssystem</h1>
+            <div class="welcome-buttons">
+                <button id="book" class="welcome-book big-button">Boka bord</button>
+                <button id="avboka" class="welcome-avboka big-button">Avboka bord</button>
+            </div>
+            <div class="que">
+                <h2>Kö</h2>
+                <ol>
+
+                </ol>
+            </div>
+            <div class="booking">
+                <h2 id="booking-state">Avboka Bord</h2>
+                <div class="booking-onerow">
+                    <select name="table" id="table">
+                        <option value="1">Bord 1 | 4 Platser</option>
+                        <option value="2">Bord 2 | 4 Platser</option>
+                        <option value="3">Bord 3 | 4 Platser</option>
+                        <option value="4">Bord 4 | 4 Platser</option>
+                        <option value="5">Bord 5 | 4 Platser</option>
+                        <option value="6">Bord 6 | 4 Platser</option>
+                        <option value="7">Bord 7 | 4 Platser</option>
+                        <option value="8">Bord 8 | 4 Platser</option>
+                        <option value="9">Bord 9 | 4 Platser</option>
+                        <option value="10">Bord 10 | 4 Platser</option>
+                        <option value="11">Bord 11 | 2 Platser</option>
+                        <option value="12">Bord 12 | 2 Platser</option>
+                        <option value="13">Bord 13 | 6 Platser</option>
+                        <option value="14">Bord 14 | 2 Platser</option>
+                        <option value="15">Bord 15 | 2 Platser</option>
+                        <option value="16">Bord 16 | 2 Platser</option>
+                    </select>
+                    <button class="material-symbols-outlined booking-button" id="help-button">help</button>
+                    <button id="confirm" class="booking-button">Bekräfta</button>
+                    <button id="cancel" class="booking-button">Avbryt</button>
+                </div>
+            </div>
+            <dialog id="floor-dialog">
+                <form method="dialog">
+                    <button>X</button>
+                </form>
+                <img src="Images/floorplan.png" alt="">
+            </dialog>
+        </div>
+    </main>
+</body>
+</html>

@@ -1,4 +1,4 @@
-const showFloorButton = document.getElementById("help-button");
+const showFloorButton = document.getElementById("karta");
 const floorDialog = document.getElementById("floor-dialog");
 const avbokaDiv = document.querySelector(".avboka");
 const bookTableDiv = document.querySelector(".booking");

@@ -1,14 +1,16 @@
 const showFloorButton = document.getElementById("karta");
 const floorDialog = document.getElementById("floor-dialog");
-const avbokaDiv = document.querySelector(".avboka");
-const bookTableDiv = document.querySelector(".booking");
+const bookingDiv = document.querySelector(".booking");
+const queDiv = document.querySelector(".que");
+const queAddDiv = document.querySelector(".que-add");
 
 const bookTableButton = document.getElementById("book");
 const avbokaButton = document.getElementById("avboka");
+const queAddButton = document.getElementById("que-button");
 
 const confirmButton = document.getElementById("confirm");
 const cancelButton = document.getElementById("cancel");
-const bookingAccept = document.getElementById("booking-accept");
+const queConfirmButton = document.getElementById("que-add-confirm");
 
 const dropdown = document.getElementById("table");
 
@@ -33,53 +35,30 @@ const tables = {
 }
 
 let bookedTables = [];
-let availableTables = [];
-let que = [];
 
-function showErrorDialog(message) {
-
-}
-
-function isTableAvailable(seats, isOut) { // Only returns boolean if false, otherwise returns table number
-    console.log(typeof seats);
-    console.log(typeof availableTables[0]);
-    if (isOut) {
-        if (seats <= 4) {
-            for (let i = 1; i <= 6; i++) {
-                if (availableTables.includes(i)) {
-                    return i;
-                }
-            }
-            return false;
-        } else {
-            return false;
-        }
-    } else {
-        if (seats == 6) {
-            if (availableTables.includes(13)) {
-                return 13;
-            } else {
-                return false;
-            }
-        } else if (seats == 4) {
-            for (let i = 7; i <= 10; i++) {
-                if (availableTables.includes(i)) {
-                    return i;
-                }
-            }
-            return false;
-        } else if (seats == 2) {
-            for (let i = 7; i <= 16; i++) {
-                if (i == 13) {
-                    continue
-                }
-                if (availableTables.includes(i)) {
-                    return i;
-                }
-            }
-            return false;
-        }
+function addToQue(name, seats) {
+    if (queDiv.classList.contains("hidden")) {
+        queDiv.classList.remove("hidden");
     }
+    const queList = queDiv.querySelector("ol");
+
+    const li = document.createElement("li");
+    const text = document.createTextNode(`${name} | ${seats} Platser`);
+    const button = document.createElement("button");
+
+    button.textContent = "X";
+
+    button.addEventListener("click", function(e) {
+        queList.removeChild(e.target.parentElement);
+        if (queList.children.length === 0) {
+            queDiv.classList.add("hidden");
+        }
+    });
+
+    li.appendChild(text);
+    li.appendChild(button);
+
+    queList.appendChild(li);
 }
 
 function clearChildren(element) {
@@ -88,14 +67,15 @@ function clearChildren(element) {
     }
 }
 
-function toggleAvbokaDiv() {
-    avbokaDiv.classList.toggle("hidden");
+function openBookingDiv() {
+    if (!queAddDiv.classList.contains("hidden")) {
+        queAddDiv.classList.add("hidden");
+    }
+    bookingDiv.classList.remove("hidden");
 }
 
-function clearDropdown() {
-    for (let i = dropdown.options.length - 1; i >= 0; i--) {
-        dropdown.remove(i);
-    }
+function hideBookingDiv() {
+    bookingDiv.classList.add("hidden");
 }
 
 showFloorButton.addEventListener("click", function(e) {
@@ -103,14 +83,25 @@ showFloorButton.addEventListener("click", function(e) {
 });
 
 bookTableButton.addEventListener("click", function(e) {
-    if (!avbokaDiv.classList.contains("hidden")) {
-        toggleAvbokaDiv();
+    clearChildren(dropdown);
+    bookingDiv.querySelector("h2").textContent = "Boka Bord";
+    
+    for (let table in tables) {
+        if (!bookedTables.includes(table)) {
+            let option = document.createElement("option");
+            option.value = table;
+            option.text = tables[table];
+            dropdown.appendChild(option);
+        }
     }
-    bookTableDiv.classList.toggle("hidden");
+    
+    openBookingDiv();
 });
 
 avbokaButton.addEventListener("click", function(e) {
     clearChildren(dropdown);
+
+    bookingDiv.querySelector("h2").textContent = "Avboka Bord";
 
     for (let table in tables) {
         if (bookedTables.includes(table)) {
@@ -121,48 +112,50 @@ avbokaButton.addEventListener("click", function(e) {
         }
     }
 
-    if (!bookTableDiv.classList.contains("hidden")) {
-        bookTableDiv.classList.toggle("hidden");
-    }
+    openBookingDiv();
+});
 
-    toggleAvbokaDiv();
+queAddButton.addEventListener("click", function(e) {
+    if (queAddDiv.classList.contains("hidden")) {
+        if (!bookingDiv.classList.contains("hidden")) {
+            bookingDiv.classList.add("hidden");
+        }
+        queAddDiv.classList.remove("hidden");
+    } else {
+        queAddDiv.classList.add("hidden");
+    }
 });
 
 confirmButton.addEventListener("click", function(e) {
     const selectedTable = dropdown.options[dropdown.selectedIndex].value;
-    
-    bookedTables = bookedTables.filter(table => table !== selectedTable);
+    const mode = bookingDiv.querySelector("h2").textContent;
+
+    if (mode === "Boka Bord") {
+        if (!bookedTables.includes(selectedTable)) {
+            bookedTables.push(selectedTable);
+        }
+    } else {
+        if (bookedTables.includes(selectedTable)) {
+            bookedTables = bookedTables.filter(table => table !== selectedTable);
+        }
+    }
 
     hideBookingDiv();
 });
 
-bookingAccept.addEventListener("click", function(e) {
-    const seats = document.getElementById("seats").value;
-    const isOut = document.getElementById("out").checked;
+queConfirmButton.addEventListener("click", function(e) {
+    const name = queAddDiv.querySelector("input").value;
+    const seats = queAddDiv.querySelector("select").value;
 
-    if (seats === 6 && isOut) {
-        showErrorDialog("Max 4 platser vid uteservering");
+    if (!name || !seats) {
+        return;
     }
 
-    console.log("Seats: " + seats);
-    console.log("Is out: " + isOut);
+    addToQue(name, seats);
 
-    const table = isTableAvailable(seats, isOut);
-
-    if (table) {
-        console.log("Table available: " + table);
-    } else {
-        console.log("Table not available");
-        // Lägg till i kö
-    }
+    queAddDiv.classList.add("hidden");
 });
 
 cancelButton.addEventListener("click", function(e) {
     hideBookingDiv();
-});
-
-window.addEventListener("load", function(e) {
-    for (let table in tables) {
-        availableTables.push(table);
-    }
 });

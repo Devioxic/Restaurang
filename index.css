@@ -30,7 +30,7 @@ button:hover {
 }
 
 .welcome {
-    padding-top: 15rem;
+    padding-top: 10rem;
     display: flex;
     align-items: center;
     flex-direction: column;
@@ -46,14 +46,12 @@ h1 {
     width: 18rem;
     border-radius: 10px;
     font-size: 2rem;
-    margin: 2rem;
+    margin: 1.5rem;
 }
 
 .welcome-buttons {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    align-items: center;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
 }
 
 #book {
@@ -72,41 +70,35 @@ h1 {
 }
 
 .que {
-    display: none;
-}
-
-.avboka {
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 100%;
-    color: var(--black-text);
     justify-content: center;
-    margin: 5rem 0;
+    width: 100%;
 }
 
-.avboka-onerow {
+.que li {
+    font-size: 1.4rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    text-shadow: #000000 1px 1px 1px;
+}
+
+.que h2 {
+    font-size: 2rem;
+    margin: 0;
+}
+
+.que button {
+    height: 1.5rem;
+    width: 1.5rem;
+    border-radius: 10px;
+    font-size: 1.25rem;
+    margin: 0.5rem;
     display: flex;
     justify-content: center;
     align-items: center;
-}
-
-.avboka h2, .booking h2{
-    color: var(--text);
-    font-size: 2.5rem;
-    margin-top: 0;
-    margin-bottom: 1rem;
-}
-
-.avboka select, .booking select {
-    width: 16rem;
-    height: 2.5rem;
-    border-radius: 10px;
-}
-
-.avboka-button {
-    height: 2.5rem;
-    margin: 0 0.5rem;
 }
 
 .booking {
@@ -114,37 +106,67 @@ h1 {
     flex-direction: column;
     align-items: center;
     width: 100%;
-    margin-top: 3rem;
+    color: var(--black-text);
+    justify-content: center;
 }
 
-.booking-options {
+.booking-onerow {
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.booking label {
-    font-size: 1.8rem;
-    margin: 0.5rem;
+.booking h2, .que-add h2{
+    color: var(--text);
+    font-size: 2.5rem;
+    margin-top: 0;
+    margin-bottom: 1rem;
 }
 
-.booking input {
-    width: 2.5rem;
+.booking select, .que-add select, .que-add input {
+    width: 16rem;
     height: 2.5rem;
+    border-radius: 10px;
+    border: none;
 }
 
-.booking button {
-    width: 12rem;
-    height: 3rem;
-    margin: 1rem 0;
-    border-radius: 10px;
-    font-size: 1.3rem;
+.booking-button {
+    height: 2.5rem;
+    margin: 0 0.5rem;
 }
 
 #confirm, #cancel {
     font-size: medium;
     font-weight: 500;
     border-radius: 10px;
+}
+
+#cancel {
+    margin-left: 0;
+}
+
+.que-add {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+input:focus, select:focus{
+    outline: none;
+}
+
+.que-add label {
+    font-size: 1.5rem;
+    margin: 0 0.5rem;
+}
+
+#que-add-confirm {
+    width: 12rem;
+    height: 3rem;
+    border-radius: 10px;
+    margin-top: 1rem;
+    font-size: 1.2rem;
 }
 
 dialog {

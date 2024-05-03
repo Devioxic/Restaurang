@@ -22,49 +22,44 @@
                     <button id="avboka" class="welcome-avboka big-button">
                         Avboka bord
                     </button>
-                    <button id="karta" class="big-button">
-                        Karta
-                    </button>
+                    <button id="karta" class="big-button">Karta</button>
+                    <button id="que-button" class="big-button">Kö</button>
                 </div>
-                <div class="que">
+                <div class="que hidden">
                     <h2>Kö</h2>
                     <ol></ol>
                 </div>
-                <div class="avboka hidden">
+                <div class="booking hidden">
                     <h2>Avboka Bord</h2>
-                    <div class="avboka-onerow">
+                    <div class="booking-onerow">
                         <select name="table" id="table"></select>
-                        <button id="confirm" class="avboka-button">
+                        <button id="confirm" class="booking-button">
                             Bekräfta
                         </button>
-                        <button id="cancel" class="avboka-button">
+                        <button id="cancel" class="booking-button">
                             Avbryt
                         </button>
                     </div>
                 </div>
-                <div class="booking hidden">
-                    <h2>Boka Bord</h2>
-                    <div class="booking-options">
-                        <label for="seats">Platser:</label>
-                        <select name="seats" id="seats">
-                            <option value="2">1-2</option>
-                            <option value="4">3-4</option>
-                            <option value="6">5-6</option>
+                <div class="que-add hidden">
+                    <h2>Lägg til i kö</h2>
+                    <div class="que-data">
+                        <label for="que-name">Namn</label>
+                        <input type="text" name="que-name" id="que-name" />
+                        <label for="que-seats">Platser</label>
+                        <select name="que-seats" id="que-seats">
+                            <option value="2">2</option>
+                            <option value="4">4</option>
+                            <option value="6">6</option>
                         </select>
-                        <label for="out">Äta ute?</label>
-                        <input name="out" id="out" type="checkbox"/>
                     </div>
-                    <button id="booking-accept">Ok</button>
+                    <button id="que-add-confirm">Bekräfta</button>
                 </div>
                 <dialog id="floor-dialog">
                     <form method="dialog">
                         <button>X</button>
                     </form>
                     <img src="Images/floorplan.png" alt="" />
-                </dialog>
-                <dialog id="error">
-                    <h3>Error</h3>
-                    <p>Info</p>
                 </dialog>
             </div>
         </main>

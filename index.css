@@ -46,11 +46,23 @@ h1 {
     width: 18rem;
     border-radius: 10px;
     font-size: 2rem;
-    margin: 0 2rem;
+    margin: 2rem;
+}
+
+.welcome-buttons {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    align-items: center;
 }
 
 #book {
     background-color: var(--primary);
+    color: var(--text);
+}
+
+#karta {
+    background-color: var(--secondary);
     color: var(--text);
 }
 

@@ -1,6 +1,7 @@
 const showFloorButton = document.getElementById("help-button");
 const floorDialog = document.getElementById("floor-dialog");
-const bookingDiv = document.querySelector(".avboka");
+const avbokaDiv = document.querySelector(".avboka");
+const bookTableDiv = document.querySelector(".booking");
 
 const bookTableButton = document.getElementById("book");
 const avbokaButton = document.getElementById("avboka");
@@ -32,13 +33,14 @@ const tables = {
 let bookedTables = [];
 let que = [];
 
-function showBookingDiv() {
-    bookingDiv.style.display = "flex"
+function clearChildren(element) {
+    while (element.firstChild) {
+        element.removeChild(element.firstChild);
+    }
 }
 
-function hideBookingDiv() {
-    bookingDiv.style.display = "none"
-    clearDropdown();
+function toggleAvbokaDiv() {
+    avbokaDiv.classList.toggle("hidden");
 }
 
 function clearDropdown() {
@@ -52,19 +54,15 @@ showFloorButton.addEventListener("click", function(e) {
 });
 
 bookTableButton.addEventListener("click", function(e) {
-    for (let table in tables) {
-        if (!bookedTables.includes(table)) {
-            let option = document.createElement("option");
-            option.value = table;
-            option.text = tables[table];
-            dropdown.appendChild(option);
-        }
+    if (!avbokaDiv.classList.contains("hidden")) {
+        toggleAvbokaDiv();
     }
-
-    showBookingDiv();
+    bookTableDiv.classList.toggle("hidden");
 });
 
 avbokaButton.addEventListener("click", function(e) {
+    clearChildren(dropdown);
+
     for (let table in tables) {
         if (bookedTables.includes(table)) {
             let option = document.createElement("option");
@@ -74,7 +72,11 @@ avbokaButton.addEventListener("click", function(e) {
         }
     }
 
-    showBookingDiv();
+    if (!bookTableDiv.classList.contains("hidden")) {
+        bookTableDiv.classList.toggle("hidden");
+    }
+
+    toggleAvbokaDiv();
 });
 
 confirmButton.addEventListener("click", function(e) {

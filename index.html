@@ -1,60 +1,72 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Restaurang</title>
-    <link rel="stylesheet" href="index.css">
-    <script src="index.js" defer></script>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
-</head>
-<body>
-    <main>
-        <div class="welcome">
-            <h1>Bokningssystem</h1>
-            <div class="welcome-buttons">
-                <button id="book" class="welcome-book big-button">Boka bord</button>
-                <button id="avboka" class="welcome-avboka big-button">Avboka bord</button>
-            </div>
-            <div class="que">
-                <h2>Kö</h2>
-                <ol>
-                    
-                </ol>
-            </div>
-            <div class="avboka">
-                <h2>Avboka Bord</h2>
-                <div class="avboka-onerow">
-                    <select name="table" id="table">
-                    </select>
-                    <button class="material-symbols-outlined avboka-button" id="help-button">help</button>
-                    <button id="confirm" class="avboka-button">Bekräfta</button>
-                    <button id="cancel" class="avboka-button">Avbryt</button>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Restaurang</title>
+        <link rel="stylesheet" href="index.css" />
+        <script src="index.js" defer></script>
+        <link
+            rel="stylesheet"
+            href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+        />
+    </head>
+    <body>
+        <main>
+            <div class="welcome">
+                <h1>Bokningssystem</h1>
+                <div class="welcome-buttons">
+                    <button id="book" class="welcome-book big-button">
+                        Boka bord
+                    </button>
+                    <button id="karta" class="big-button">
+                        Karta
+                    </button>
+                    <button id="avboka" class="welcome-avboka big-button">
+                        Avboka bord
+                    </button>
                 </div>
+                <div class="que">
+                    <h2>Kö</h2>
+                    <ol></ol>
+                </div>
+                <div class="avboka hidden">
+                    <h2>Avboka Bord</h2>
+                    <div class="avboka-onerow">
+                        <select name="table" id="table"></select>
+                        <button id="confirm" class="avboka-button">
+                            Bekräfta
+                        </button>
+                        <button id="cancel" class="avboka-button">
+                            Avbryt
+                        </button>
+                    </div>
+                </div>
+                <div class="booking hidden">
+                    <h2>Boka Bord</h2>
+                    <div class="booking-options">
+                        <label for="seats">Platser:</label>
+                        <select name="seats" id="seats">
+                            <option value="2">1-2</option>
+                            <option value="4">3-4</option>
+                            <option value="6">5-6</option>
+                        </select>
+                        <label for="out">Äta ute?</label>
+                        <input name="out" id="out" type="checkbox"/>
+                    </div>
+                    <button>Ok</button>
+                </div>
+                <dialog id="floor-dialog">
+                    <form method="dialog">
+                        <button>X</button>
+                    </form>
+                    <img src="Images/floorplan.png" alt="" />
+                </dialog>
+                <dialog id="error">
+                    <h3>Error</h3>
+                    <p>Info</p>
+                </dialog>
             </div>
-            <div class="booking">
-                <label for="seats">Plats:</label>
-                <select name="seats" id="seats">
-                    <option value="2">1-2</option>
-                    <option value="4">3-4</option>
-                    <option value="6">5-6</option>
-                </select>
-                <label for="out">Äta ute?</label>
-                <input name="out" id="out" type="checkbox">
-                <button>Ok</button>
-            </div>
-            <dialog id="floor-dialog">
-                <form method="dialog">
-                    <button>X</button>
-                </form>
-                <img src="Images/floorplan.png" alt="">
-            </dialog>
-            <dialog id="error">
-                <h3>Error</h3>
-                <p>Info</p>
-            </dialog>
-
-        </div>
-    </main>
-</body>
+        </main>
+    </body>
 </html>

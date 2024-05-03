@@ -69,7 +69,6 @@ h1 {
     align-items: center;
     width: 100%;
     color: var(--black-text);
-    display: none;
     justify-content: center;
     margin: 5rem 0;
 }
@@ -80,14 +79,14 @@ h1 {
     align-items: center;
 }
 
-.avboka h2 {
+.avboka h2, .booking h2{
     color: var(--text);
     font-size: 2.5rem;
     margin-top: 0;
     margin-bottom: 1rem;
 }
 
-.avboka select {
+.avboka select, .booking select {
     width: 16rem;
     height: 2.5rem;
     border-radius: 10px;
@@ -98,14 +97,36 @@ h1 {
     margin: 0 0.5rem;
 }
 
-#help-button {
-    width: 2.5rem;
-    background: none;
-    color: var(--background);
-    font-size: 2.5rem !important;
+.booking {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    margin-top: 3rem;
+}
+
+.booking-options {
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.booking label {
+    font-size: 1.8rem;
+    margin: 0.5rem;
+}
+
+.booking input {
+    width: 2.5rem;
+    height: 2.5rem;
+}
+
+.booking button {
+    width: 12rem;
+    height: 3rem;
+    margin: 1rem 0;
+    border-radius: 10px;
+    font-size: 1.3rem;
 }
 
 #confirm, #cancel {
@@ -145,4 +166,8 @@ dialog button {
     'wght' 400,
     'GRAD' 0,
     'opsz' 24
-  }
+}
+
+.hidden {
+    display: none !important;
+}
